@@ -1,2 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.css';
+
+.ng-invalid:focus:not(form) {
+	background-color: #fff;
+  	border-bottom: 2px solid red !important;
+}
+
+.ng-valid:not(form) {
+	background-color: #fff;
+  	border-bottom: 2px solid #60a0ff !important;
+}

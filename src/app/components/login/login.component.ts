@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +8,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+	public user = {
+		email    : null,
+		password : null
+	};
+	public error = null;
 
-  ngOnInit() {
-  }
+	constructor(private http : HttpClient) { }
+
+	ngOnInit() {
+	}
+
+	login() {
+		return this.http.post('http://localhost/api/login', this.user, this.headers())
+		.subscribe(
+			data  => console.log(data),
+			error => this.handleError(error)
+		);
+	}
+
+	handleError(error) {
+		this.error = error.error.error;
+	}
+
+	private headers() {
+   		return { headers: new HttpHeaders({'Authorization': 'Basic VHViZUtpZHM6YWRtaW5UdWJlS2lkcw=='})};
+  	}
 
 }
