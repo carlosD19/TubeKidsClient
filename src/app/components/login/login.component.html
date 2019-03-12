@@ -4,14 +4,17 @@
     	<br><h1>TubeKids</h1><br>
     </div>
     <div class="alert alert-danger" [hidden]="!error">
+      <button type="button" class="close" data-dismiss="alert">
+        &times;
+      </button>
       {{error}}
     </div>
     <form #loginForm=ngForm (ngSubmit)="login()">
     	<label>Email</label><br>
-      	<input type="email" id="email" class="fadeIn second" name="email" placeholder="Email" [(ngModel)]="user.email" required>
+      <input type="email" id="email" class="fadeIn first" name="email" placeholder="Email" [(ngModel)]="user.email" required>
     	<label>Password</label>
-      	<input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" [(ngModel)]="user.password" required>
-      <input type="submit" class="fadeIn fourth" [disabled]="!loginForm.valid" value="Log In">
+      <input type="password" id="password" class="fadeIn second" name="password" placeholder="Password" [(ngModel)]="user.password" required>
+      <input type="submit" class="fadeIn third" [disabled]="!loginForm.valid" value="Log In">
     </form>
     <div id="formFooter">
       <a class="underlineHover" routerLink="register">Register</a>

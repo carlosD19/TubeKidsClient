@@ -1,3 +1,43 @@
-<p>
-  register works!
-</p>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div class="fadeIn first">
+      <h1>TubeKids</h1><br>
+    </div>
+    <form #registerForm=ngForm (ngSubmit)="register()">
+      <div class="row">
+        <div class="col-6">
+          <label>Firstname</label><br>
+          <input type="text" id="firstname" class="fadeIn first" name="firstname" placeholder="Firstname" [(ngModel)]="user.firstname" required>
+          <label class="error" [hidden]="!error.firstname">{{error.firstname}}</label>
+          <label>Phone number</label><br>
+          <input type="tel" id="phone_number" class="fadeIn second" name="phone_number" placeholder="Phone number" [(ngModel)]="user.phone_number" required>
+          <label class="error" [hidden]="!error.phone_number">{{error.phone_number}}</label>
+          <label>Email</label><br>
+          <input type="email" id="email" class="fadeIn third" name="email" placeholder="Email" [(ngModel)]="user.email" required>
+          <label class="error" [hidden]="!error.email">{{error.email}}</label>
+          <label>Password</label><br>
+          <input type="password" id="password" class="fadeIn fourth" name="password" placeholder="Password" [(ngModel)]="user.password" required>
+          <label class="error" [hidden]="!error.password">{{error.password}}</label>
+        </div>
+        <div class="col-6">
+          <label>Lastname</label><br>
+          <input type="text" id="lastname" class="fadeIn first" name="lastname" placeholder="Lastname" [(ngModel)]="user.lastname" required>
+          <label class="error" [hidden]="!error.lastname">{{error.lastname}}</label>
+          <label>Birthdate</label><br>
+          <input type="date" id="birthdate" class="fadeIn second" name="birthdate" placeholder="Birthdate" [(ngModel)]="user.birthdate" required>
+          <label class="error" [hidden]="!error.birthdate">{{error.birthdate}}</label>
+          <label>Country</label><br>
+          <input type="text" id="country" class="fadeIn third" name="country" placeholder="Country" [(ngModel)]="user.country" required>
+          <label class="error" [hidden]="!error.country">{{error.country}}</label>
+          <label>Confirm password</label><br>
+          <input type="password" id="confirm_password" class="fadeIn fourth" name="confirm_password" placeholder="Confirm password" [(ngModel)]="user.confirm_password" required>
+          <label class="error" [hidden]="!error.confirm_password">{{error.confirm_password}}</label>
+        </div>
+      </div>
+      <input type="submit" class="fadeIn fourth" [disabled]="!registerForm.valid" value="Signup">
+    </form>
+    <div id="formFooter">
+      <a class="underlineHover" routerLink="">Login</a>
+    </div>
+  </div>
+</div>

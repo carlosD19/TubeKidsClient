@@ -194,12 +194,6 @@ input[type=password], input[type=email] {
   animation-delay: 0.8s;
 }
 
-.fadeIn.fourth {
-  -webkit-animation-delay: 1s;
-  -moz-animation-delay: 1s;
-  animation-delay: 1s;
-}
-
 .underlineHover:after {
   display: block;
   left: 0;

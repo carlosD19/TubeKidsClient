@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 	}
 
 	login() {
-		return this.http.post('http://localhost/api/login', this.user, this.headers())
+		return this.http.post('http://localhost/api/login', this.user)
 		.subscribe(
 			data  => console.log(data),
 			error => this.handleError(error)
@@ -30,9 +30,4 @@ export class LoginComponent implements OnInit {
 	handleError(error) {
 		this.error = error.error.error;
 	}
-
-	private headers() {
-   		return { headers: new HttpHeaders({'Authorization': 'Basic VHViZUtpZHM6YWRtaW5UdWJlS2lkcw=='})};
-  	}
-
 }

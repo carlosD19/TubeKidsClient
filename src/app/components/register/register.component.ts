@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+	public user = {
+		firstname        : null,
+		lastname         : null,
+		phone_number     : null,
+		birthdate        : null,
+		country          : null,
+		email            : null,
+		password         : null,
+		confirm_password : null
+	};
+	public error = [];
 
-  ngOnInit() {
-  }
+	constructor(private http : HttpClient) { }
+
+	ngOnInit() {
+	}
+
+	register() {
+		return this.http.post('http://localhost/api/signup', this.user)
+		.subscribe(
+			data  => console.log(data),
+			error => this.handleError(error)
+		);
+	}
+
+	handleError(error) {
+		this.error = error.error.errors;
+	}
 
 }
