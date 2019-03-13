@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { UserService } from '../../services/user.service';
+import { TokenService } from '../../services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -20,17 +22,25 @@ export class RegisterComponent implements OnInit {
 	};
 	public error = [];
 
-	constructor(private http : HttpClient) { }
+	constructor(
+		private userService : UserService,
+		private tokenService : TokenService,
+		private router       : Router
+	) { }
 
 	ngOnInit() {
 	}
 
 	register() {
-		return this.http.post('http://localhost/api/signup', this.user)
-		.subscribe(
-			data  => console.log(data),
+		this.userService.signup(this.user).subscribe(
+			data  => this.handleResponse(data),
 			error => this.handleError(error)
 		);
+	}
+
+	handleResponse(data) {
+		this.tokenService.handle(data.access_token);
+		this.router.navigateByUrl('/index');
 	}
 
 	handleError(error) {
