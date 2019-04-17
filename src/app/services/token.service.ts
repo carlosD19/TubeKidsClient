@@ -11,12 +11,21 @@ export class TokenService {
 	};
 	constructor() { }
 
-	handle(token) {
+	handle(token, email_verified_at) {
 		this.setToken(token);
+		this.setEmailVerified(email_verified_at);
+	}
+
+	setEmailVerified(email_verified_at) {
+		localStorage.setItem('email_verified_at', email_verified_at);
 	}
 
 	setToken(token) {
 		localStorage.setItem('token', token);
+	}
+
+	getEmailVerified() {
+		return localStorage.getItem('email_verified_at');
 	}
 
 	getToken() {
@@ -25,11 +34,13 @@ export class TokenService {
 
 	removeToken() {
 		localStorage.removeItem('token');
+		localStorage.removeItem('email_verified_at');
 	}
 
 	isValidToken() {
 		const token = this.getToken();
-		if (token) {
+		const emailVerified = this.getEmailVerified();
+		if (token && emailVerified) {
 			const payload = this.payload(token);
 			if (payload) {
 				return Object.values(this.iss).indexOf(payload.iss) > -1 ? true : false;

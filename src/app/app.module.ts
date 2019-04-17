@@ -11,11 +11,13 @@ import { RegisterComponent } from './components/register/register.component';
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 import { TokenService } from './services/token.service';
+import { HttpClientService } from './services/http-client.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { VideosComponent } from './components/videos/videos.component';
 import { ProfilesComponent } from './components/profiles/profiles.component';
 import { IndexComponent } from './components/index/index.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { IndexComponent } from './components/index/index.component';
     RegisterComponent,
     VideosComponent,
     ProfilesComponent,
-    IndexComponent
+    IndexComponent,
+    VerifyEmailComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { IndexComponent } from './components/index/index.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [UserService, AuthService, TokenService],
+  providers: [UserService, AuthService, TokenService, HttpClientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

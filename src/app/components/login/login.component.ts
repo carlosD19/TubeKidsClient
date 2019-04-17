@@ -35,9 +35,13 @@ export class LoginComponent implements OnInit {
 	}
 
 	handleResponse(data) {
-		this.tokenService.handle(data.access_token);
-		this.auth.changeAuthStatus(true);
-		this.router.navigateByUrl('/index');
+		if (data.user.email_verified_at) {
+			this.tokenService.handle(data.access_toke, data.user.email_verified_at);
+			this.auth.changeAuthStatus(true);
+			this.router.navigateByUrl('/index');
+		} else {
+			this.router.navigate(['/verify', this.user.email]);
+		}
 	}
 
 	handleError(error) {

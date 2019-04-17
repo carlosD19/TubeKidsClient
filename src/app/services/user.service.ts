@@ -17,4 +17,8 @@ export class UserService {
   signup(data) {
   	return this.http.post(`${this.url}/signup`, data);
   }
+
+  verifyEmail(email) {
+  	return this.http.post(`${this.url}/verify/email`, email);
+  }
 }

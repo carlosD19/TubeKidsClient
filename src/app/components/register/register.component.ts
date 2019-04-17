@@ -39,8 +39,8 @@ export class RegisterComponent implements OnInit {
 	}
 
 	handleResponse(data) {
-		this.tokenService.handle(data.access_token);
-		this.router.navigateByUrl('/index');
+		this.tokenService.handle(data.access_toke, data.user.email_verified_at);
+		this.router.navigate(['/verify', this.user.email]);
 	}
 
 	handleError(error) {
