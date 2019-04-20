@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 import { TokenService } from '../../services/token.service';
 import { Router } from '@angular/router';
 
@@ -13,9 +14,10 @@ export class NavbarComponent implements OnInit {
 	public loggedIn : boolean;
 
 	constructor(
-		private auth   : AuthService,
-		private token  : TokenService,
-		private router : Router,
+		private userService  : UserService,
+		private auth         : AuthService,
+		private token        : TokenService,
+		private router       : Router
 	) { }
 
 	ngOnInit() {
@@ -23,6 +25,10 @@ export class NavbarComponent implements OnInit {
 	}
 
 	logout() {
+		this.userService.logout().subscribe(
+			data  => console.log(data),
+			error => console.log(error)
+		);
 		this.token.removeToken();
 		this.auth.changeAuthStatus(false);
 		this.router.navigateByUrl('');

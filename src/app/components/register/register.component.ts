@@ -11,19 +11,19 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
 	public user = {
-		firstname        : null,
-		lastname         : null,
-		phone_number     : null,
+		firstname        : 'Carlos',
+		lastname         : 'Martinez',
+		phone_number     : '86478778',
 		birthdate        : null,
-		country          : null,
-		email            : null,
-		password         : null,
-		confirm_password : null
+		country          : 'Costa Rica',
+		email            : 'cmartinezs@est.utn.ac.cr',
+		password         : '12345678',
+		confirm_password : '12345678'
 	};
 	public error = [];
 
 	constructor(
-		private userService : UserService,
+		private userService  : UserService,
 		private tokenService : TokenService,
 		private router       : Router
 	) { }
@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
 	}
 
 	handleResponse(data) {
-		this.tokenService.handle(data.access_toke, data.user.email_verified_at);
+		this.tokenService.handle(data.access_token, data.user.email_verified_at);
 		this.router.navigate(['/verify', this.user.email]);
 	}
 
