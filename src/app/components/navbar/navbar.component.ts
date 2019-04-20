@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { UserService } from '../../services/user.service';
 import { TokenService } from '../../services/token.service';
+import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,10 +14,10 @@ export class NavbarComponent implements OnInit {
 	public loggedIn : boolean;
 
 	constructor(
+		private auth   : AuthService,
+		private token  : TokenService,
 		private userService  : UserService,
-		private auth         : AuthService,
-		private token        : TokenService,
-		private router       : Router
+		private router : Router
 	) { }
 
 	ngOnInit() {

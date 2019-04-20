@@ -18,6 +18,7 @@ import { VideosComponent } from './components/videos/videos.component';
 import { ProfilesComponent } from './components/profiles/profiles.component';
 import { IndexComponent } from './components/index/index.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { VerifyCodeComponent } from './components/verify-code/verify-code.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
     VideosComponent,
     ProfilesComponent,
     IndexComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    VerifyCodeComponent
   ],
   imports: [
     BrowserModule,

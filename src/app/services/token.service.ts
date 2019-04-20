@@ -11,9 +11,14 @@ export class TokenService {
 	};
 	constructor() { }
 
-	handle(token, email_verified_at) {
+	handle(token, email_verified_at, active_code) {
 		this.setToken(token);
+		this.setActiveCode(active_code);
 		this.setEmailVerified(email_verified_at);
+	}
+
+	setActiveCode(active_code) {
+		localStorage.setItem('active_code', active_code);
 	}
 
 	setEmailVerified(email_verified_at) {
@@ -28,6 +33,10 @@ export class TokenService {
 		return localStorage.getItem('email_verified_at');
 	}
 
+	getActiveCode() {
+		return localStorage.getItem('active_code');
+	}
+
 	getToken() {
 		return localStorage.getItem('token');
 	}
@@ -35,12 +44,14 @@ export class TokenService {
 	removeToken() {
 		localStorage.removeItem('token');
 		localStorage.removeItem('email_verified_at');
+		localStorage.removeItem('active_code');
 	}
 
 	isValidToken() {
-		const token = this.getToken();
-		const emailVerified = this.getEmailVerified();
-		if (token && emailVerified) {
+		const token         = this.getToken();
+		const emailVerified = this.getEmailVerified() === 'null' ? false : true;
+		const activeCode    = this.getActiveCode() == 'true' ? true : false;
+		if ((emailVerified) && token && activeCode) {
 			const payload = this.payload(token);
 			if (payload) {
 				return Object.values(this.iss).indexOf(payload.iss) > -1 ? true : false;
@@ -60,5 +71,29 @@ export class TokenService {
 
 	loggedIn() {
 		return this.isValidToken();
+	}
+
+	emailVerified() {
+		const token         = this.getToken();
+		const emailVerified = this.getEmailVerified() === 'null' ? false : true;
+		if (!(emailVerified) && token) {
+			const payload = this.payload(token);
+			if (payload) {
+				return Object.values(this.iss).indexOf(payload.iss) > -1 ? true : false;
+			}
+		}
+		return false;
+	}
+
+	codeVerified() {
+		const token         = this.getToken();
+		const activeCode    = this.getActiveCode() == 'true' ? true : false;
+		if (!(activeCode) && token) {
+			const payload = this.payload(token);
+			if (payload) {
+				return Object.values(this.iss).indexOf(payload.iss) > -1 ? true : false;
+			}
+		}
+		return false;
 	}
 }

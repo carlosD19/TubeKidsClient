@@ -6,8 +6,11 @@ import { VideosComponent } from './components/videos/videos.component';
 import { ProfilesComponent } from './components/profiles/profiles.component';
 import { IndexComponent } from './components/index/index.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { VerifyCodeComponent } from './components/verify-code/verify-code.component';
 import { BeforeLoginService } from './services/before-login.service';
 import { AfterLoginService } from './services/after-login.service';
+import { EmailVerifiedService } from './services/email-verified.service';
+import { CodeVerifiedService } from './services/code-verified.service';
 
 const routes: Routes = [
 	{ path: '' , component: LoginComponent, canActivate: [BeforeLoginService]},
@@ -15,7 +18,8 @@ const routes: Routes = [
 	{ path: 'videos' , component: VideosComponent, canActivate: [AfterLoginService]},
 	{ path: 'profiles' , component: ProfilesComponent, canActivate: [AfterLoginService]},
 	{ path: 'index' , component: IndexComponent, canActivate: [AfterLoginService]},
-	{ path: 'verify/:email' , component: VerifyEmailComponent},
+	{ path: 'verify/email/:email' , component: VerifyEmailComponent, canActivate: [EmailVerifiedService]},
+	{ path: 'verify/code/:email' , component: VerifyCodeComponent, canActivate: [CodeVerifiedService]},
 ];
 
 @NgModule({

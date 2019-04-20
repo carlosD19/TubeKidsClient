@@ -33,8 +33,4 @@ export class VerifyEmailComponent implements OnInit {
 			error => console.log(error)
 		);
 	}
-
-	resend() {
-
-	}
 }

@@ -1,0 +1,23 @@
+<br><br>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Please verify code from your phone number to active account</div>
+                <div class="card-body">
+                	<form #confirmCodeForm=ngForm (ngSubmit)="confirmCode()">
+	                    <div class="form-group">
+						    <label for="code">Code</label>
+						    <input type="text" name="code" class="form-control" id="code" placeholder="Enter code" [(ngModel)]="user.code" required>
+                            <label class="error" [hidden]="!error">{{error}}</label>
+						  </div>
+	                    <input type="submit" class="btn btn-primary" [disabled]="!confirmCodeForm.valid" value="Verify">
+	                </form>
+                </div>
+                <div class="card-footer">
+                	<a class="btn btn-primary text-white" (click)="sendCode()">Click here to request new code</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

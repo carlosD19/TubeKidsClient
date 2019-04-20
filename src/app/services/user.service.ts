@@ -26,8 +26,19 @@ export class UserService {
   	return this.http.post(`${this.url}/verify/email`, email, this.header());
   }
 
+  verifyCode(data) {
+    return this.http.post(`${this.url}/verify/code`, data, this.header());
+  }
+
+  sendCode(data) {
+    return this.http.get(`${this.url}/code/${data.email}`, this.header());
+  }
+
   logout() {
-    return this.http.post(`${this.url}/logout`, this.header());
+    let data = {
+      token : this.tokenService.getToken()
+    };
+    return this.http.post(`${this.url}/logout`, data, this.header());
   }
 
   private header() {
