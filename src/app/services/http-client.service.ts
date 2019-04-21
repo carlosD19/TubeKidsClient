@@ -7,7 +7,7 @@ import { TokenService } from './../services/token.service';
 })
 export class HttpClientService {
 
-  private url = 'http://localhost/api';
+  private baseUrl = 'http://localhost/api';
 
   constructor(
     private tokenService : TokenService,
@@ -15,19 +15,19 @@ export class HttpClientService {
     ) { }
 
   get(url) {
-  	return this.http.get(`${this.url}/${url}`, this.header());
+  	return this.http.get(`${this.baseUrl}/${url}`, this.header());
   }
 
   post(url, data) {
-  	return this.http.post(`${this.url}/${url}`, data, this.header());
+  	return this.http.post(`${this.baseUrl}/${url}`, data, this.header());
   }
 
   put(url, data) {
-  	return this.http.put(`${this.url}/${url}`, data, this.header());
+  	return this.http.put(`${this.baseUrl}/${url}`, data, this.header());
   }
 
   delete(url) {
-  	return this.http.delete(`${this.url}/${url}`, this.header());
+  	return this.http.delete(`${this.baseUrl}/${url}`, this.header());
   }
 
   private header() {

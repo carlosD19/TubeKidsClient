@@ -14,11 +14,17 @@ import { TokenService } from './services/token.service';
 import { HttpClientService } from './services/http-client.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
-import { VideosComponent } from './components/videos/videos.component';
-import { ProfilesComponent } from './components/profiles/profiles.component';
 import { IndexComponent } from './components/index/index.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { VerifyCodeComponent } from './components/verify-code/verify-code.component';
+import { VideosIndexComponent } from './components/videos/index/index.component';
+import { VideosCreateComponent } from './components/videos/create/create.component';
+import { VideosEditComponent } from './components/videos/edit/edit.component';
+import { VideosDeleteComponent } from './components/videos/delete/delete.component';
+import { ProfilesIndexComponent } from './components/profiles/index/index.component';
+import { ProfilesCreateComponent } from './components/profiles/create/create.component';
+import { ProfilesEditComponent } from './components/profiles/edit/edit.component';
+import { ProfilesDeleteComponent } from './components/profiles/delete/delete.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +32,17 @@ import { VerifyCodeComponent } from './components/verify-code/verify-code.compon
     NavbarComponent,
     LoginComponent,
     RegisterComponent,
-    VideosComponent,
-    ProfilesComponent,
     IndexComponent,
     VerifyEmailComponent,
-    VerifyCodeComponent
+    VerifyCodeComponent,
+    ProfilesIndexComponent,
+    ProfilesCreateComponent,
+    ProfilesEditComponent,
+    ProfilesDeleteComponent,
+    VideosIndexComponent,
+    VideosCreateComponent,
+    VideosEditComponent,
+    VideosDeleteComponent,
   ],
   imports: [
     BrowserModule,
