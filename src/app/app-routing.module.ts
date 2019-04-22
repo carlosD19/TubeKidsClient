@@ -13,11 +13,13 @@ import { CodeVerifiedService } from './services/code-verified.service';
 
 import { VideosIndexComponent } from './components/videos/index/index.component';
 import { VideosCreateComponent } from './components/videos/create/create.component';
+import { VideosShowComponent } from './components/videos/show/show.component';
 import { VideosEditComponent } from './components/videos/edit/edit.component';
 import { VideosDeleteComponent } from './components/videos/delete/delete.component';
 
 import { ProfilesIndexComponent } from './components/profiles/index/index.component';
 import { ProfilesCreateComponent } from './components/profiles/create/create.component';
+import { ProfilesShowComponent } from './components/profiles/show/show.component';
 import { ProfilesEditComponent } from './components/profiles/edit/edit.component';
 import { ProfilesDeleteComponent } from './components/profiles/delete/delete.component';
 
@@ -27,11 +29,13 @@ const routes: Routes = [
 
 	{ path: 'videos' , component: VideosIndexComponent, canActivate: [AfterLoginService]},
 	{ path: 'videos/new' , component: VideosCreateComponent, canActivate: [AfterLoginService]},
+	{ path: 'videos/:id/show' , component: VideosShowComponent, canActivate: [AfterLoginService]},
 	{ path: 'videos/:id/edit' , component: VideosEditComponent, canActivate: [AfterLoginService]},
 	{ path: 'videos/:id/delete' , component: VideosDeleteComponent, canActivate: [AfterLoginService]},
 
 	{ path: 'profiles' , component: ProfilesIndexComponent, canActivate: [AfterLoginService]},
 	{ path: 'profiles/new' , component: ProfilesCreateComponent, canActivate: [AfterLoginService]},
+	{ path: 'profiles/:id/show' , component: ProfilesShowComponent, canActivate: [AfterLoginService]},
 	{ path: 'profiles/:id/edit' , component: ProfilesEditComponent, canActivate: [AfterLoginService]},
 	{ path: 'profiles/:id/delete' , component: ProfilesDeleteComponent, canActivate: [AfterLoginService]},
 	

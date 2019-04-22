@@ -25,6 +25,7 @@ import { ProfilesIndexComponent } from './components/profiles/index/index.compon
 import { ProfilesCreateComponent } from './components/profiles/create/create.component';
 import { ProfilesEditComponent } from './components/profiles/edit/edit.component';
 import { ProfilesDeleteComponent } from './components/profiles/delete/delete.component';
+import { ShowComponent } from './components/profiles/show/show.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { ProfilesDeleteComponent } from './components/profiles/delete/delete.com
     VideosCreateComponent,
     VideosEditComponent,
     VideosDeleteComponent,
+    ShowComponent,
   ],
   imports: [
     BrowserModule,
