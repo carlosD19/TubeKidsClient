@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClientService } from '../../../services/http-client.service';
 
 @Component({
   selector: 'app-index',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilesIndexComponent implements OnInit {
 
-  constructor() { }
+	public profiles = [];
+	private url = "profiles";
+  	constructor(
+  		private httpService  : HttpClientService
+  	) { }
 
-  ngOnInit() {
-  }
+  	ngOnInit() {
+  		this.httpService.get(this.url).subscribe(
+  			data  => console.log(data),
+			error => console.log(error)
+  		);
+  	}
 
 }

@@ -17,15 +17,18 @@ import { LoginComponent } from './components/login/login.component';
 import { IndexComponent } from './components/index/index.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { VerifyCodeComponent } from './components/verify-code/verify-code.component';
+
 import { VideosIndexComponent } from './components/videos/index/index.component';
 import { VideosCreateComponent } from './components/videos/create/create.component';
 import { VideosEditComponent } from './components/videos/edit/edit.component';
 import { VideosDeleteComponent } from './components/videos/delete/delete.component';
+import { VideosShowComponent } from './components/videos/show/show.component';
+
 import { ProfilesIndexComponent } from './components/profiles/index/index.component';
 import { ProfilesCreateComponent } from './components/profiles/create/create.component';
 import { ProfilesEditComponent } from './components/profiles/edit/edit.component';
 import { ProfilesDeleteComponent } from './components/profiles/delete/delete.component';
-import { ShowComponent } from './components/profiles/show/show.component';
+import { ProfilesShowComponent } from './components/profiles/show/show.component';
 
 @NgModule({
   declarations: [
@@ -40,11 +43,12 @@ import { ShowComponent } from './components/profiles/show/show.component';
     ProfilesCreateComponent,
     ProfilesEditComponent,
     ProfilesDeleteComponent,
+    ProfilesShowComponent,
     VideosIndexComponent,
     VideosCreateComponent,
     VideosEditComponent,
     VideosDeleteComponent,
-    ShowComponent,
+    VideosShowComponent,
   ],
   imports: [
     BrowserModule,
