@@ -12,6 +12,7 @@ export class ProfilesShowComponent implements OnInit {
 	private id     : string;
 	public profile : Profile;
 	private url    : string;
+	
  	constructor(
  		private httpService : HttpClientService,
 		private route       : ActivatedRoute,
