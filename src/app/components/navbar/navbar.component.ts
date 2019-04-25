@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
 
 	public loggedIn : boolean;
-
 	constructor(
 		private auth   : AuthService,
 		private token  : TokenService,

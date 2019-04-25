@@ -1,3 +1,26 @@
-<p>
-  show works!
-</p>
+<app-navbar></app-navbar>
+<br><br>
+<div class="row justify-content-center">
+	<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+		<div>
+			<h3  class="text-center">{{profile.username}}</h3><br>
+	    	<div class="form-group">
+	    		<h5>Full name</h5>
+	            <label class="text-ajust">{{profile.full_name}}</label>
+	        </div>
+	        <div class="form-group">
+	            <h5>Age</h5>
+	            <label class="text-ajust">{{profile.age}}</label>
+	        </div>
+			<div class="form-group">
+	            <h5>PIN</h5>
+	            <label class="text-ajust">{{profile.pin}}</label>
+	        </div>
+	        <div class="form-group">
+	        	<a routerLink="/profiles/{{profile.id}}/edit" class="btn btn-info form-control">Editar</a><br><br>
+	            <a routerLink="/profiles/{{profile.id}}/delete" class="btn btn-danger form-control">Eliminar</a>
+	        </div>
+		</div>
+	</div>
+</div>
+<br><br>

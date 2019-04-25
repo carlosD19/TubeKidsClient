@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientService } from '../../../services/http-client.service';
-
+import { Profile } from '../../../models/profile';
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -8,16 +8,20 @@ import { HttpClientService } from '../../../services/http-client.service';
 })
 export class ProfilesIndexComponent implements OnInit {
 
-	public profiles = [];
-	private url = "profiles";
-  	constructor(
-  		private httpService  : HttpClientService
-  	) { }
+	public profiles : Profile[];
+	private url : string;
+  	constructor(private httpService  : HttpClientService) {
+  		this.url = "profiles";
+  	}
 
   	ngOnInit() {
+  		this.getProfileList();
+  	}
+
+  	getProfileList() {
   		this.httpService.get(this.url).subscribe(
-  			data  => console.log(data),
-			error => console.log(error)
+  			(data: Profile[]) => this.profiles = data,
+  			error => console.log(error.error)
   		);
   	}
 

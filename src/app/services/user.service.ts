@@ -34,6 +34,13 @@ export class UserService {
     return this.http.get(`${this.url}/code/${data.email}`, this.header());
   }
 
+  me() {
+    let data = {
+      token : this.tokenService.getToken()
+    };
+    return this.http.post(`${this.url}/me`, data, this.header());
+  }
+
   logout() {
     let data = {
       token : this.tokenService.getToken()

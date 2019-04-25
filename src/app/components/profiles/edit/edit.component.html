@@ -1,3 +1,35 @@
-<p>
-  edit works!
-</p>
+<app-navbar></app-navbar>
+<br><br>
+<div class="row justify-content-center">
+	<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+		<h3 class="text-center">Edit Profile</h3><br>
+	    <form #modifyForm=ngForm (ngSubmit)="modify()">
+            <div class="form-group">
+	            <label>Full name</label>
+	            <input type="text" name="full_name" id="full_name" class="form-control" [(ngModel)]="profile.full_name" required placeholder="Full name">
+	            <label class="error" [hidden]="!error.full_name">{{error.full_name}}</label>
+	        </div>
+	        <div class="form-group">
+	            <label>Username</label>
+	            <input type="text" name="username" id="username" class="form-control" [(ngModel)]="profile.username" required placeholder="Username">
+	            <label class="error" [hidden]="!error.username">{{error.username}}</label>
+	        </div>
+	        <div class="form-group">
+	            <label>Age</label>
+	            <input type="number" name="age" id="age" class="form-control" [(ngModel)]="profile.age" required placeholder="Age">
+	            <label class="error" [hidden]="!error.age">{{error.age}}</label>
+	        </div>
+            <div class="form-group">
+	            <label>PIN</label>
+	            <input type="number" name="pin" id="pin" min="1" max="100" 
+					class="form-control" [(ngModel)]="profile.pin" required placeholder="PIN">
+	            <label class="error" [hidden]="!error.pin">{{error.pin}}</label>
+	        </div>
+	        <div class="form-group">
+	            <button type="submit" class="btn btn-primary form-control" [disabled]="!modifyForm.valid" name="modify">Modify</button><br><br>
+	            <button routerLink="/profiles" class="btn btn-danger form-control">Cancel</button>
+	        </div>
+	    </form>
+	</div>
+</div>
+<br><br>

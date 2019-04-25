@@ -1,8 +1,11 @@
 export class Video {
-	id         : number;
-	video_name : string;
-	url_video  : string;
-	video      : File;
+	id?         : number;
+	name        : string;
+	path?       : string;
+	type        : string;
+	video?      : File;
+	created_at? : string;
+	updated_at? : string;
 
 	constructor(){
 		
