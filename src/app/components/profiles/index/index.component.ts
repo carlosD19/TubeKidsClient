@@ -8,8 +8,8 @@ import { Profile } from '../../../models/profile';
 })
 export class ProfilesIndexComponent implements OnInit {
 
-	public profiles : Profile[];
-	private url : string;
+	  public profiles : Profile[];
+	  private url : string;
   	constructor(private httpService  : HttpClientService) {
   		this.url = "profiles";
   	}

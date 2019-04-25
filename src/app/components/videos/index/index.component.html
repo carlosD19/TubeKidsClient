@@ -1,3 +1,44 @@
-<p>
-  index works!
-</p>
+<app-navbar></app-navbar>
+<div class="row justify-content-center">
+	<div class="col-lg-10 col-md-11 col-sm-12 col-xs-12">
+		<br><br><h2>List of Videos</h2><br>
+		<table class="table table-hover table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>Video</th>
+					<th>Name</th>
+					<th>Type</th>
+					<th colspan="3">
+						<a routerLink="/videos/new" class="btn btn-success">
+							New Video
+					    </a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let video of videos">
+					
+					<td><iframe [src]='videoURL(video.path)' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+					<td>{{video.name}}</td>
+					<td *ngIf="video.type">YouTube</td>
+					<td *ngIf="!video.type">Video</td>
+					<td>
+						<a routerLink="/videos/{{video.id}}/show" class="btn btn-warning">
+							<i class="fas fa-eye text-white"></i>
+	                    </a>
+	                </td>
+					<td>
+						<a routerLink="/videos/{{video.id}}/edit" class="btn btn-info">
+							<i class="fas fa-edit"></i>
+	                    </a>
+	                </td>
+					<td>
+						<a routerLink="/videos/{{video.id}}/delete" class="btn btn-danger">
+							<i class="fas fa-trash-alt"></i>
+	                    </a>
+	                </td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

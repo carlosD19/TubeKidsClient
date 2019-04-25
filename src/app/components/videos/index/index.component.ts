@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClientService } from '../../../services/http-client.service';
+import { Video } from '../../../models/video';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-index',
@@ -7,9 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VideosIndexComponent implements OnInit {
 
-  constructor() { }
+  	public videos   : Video[];
+	private url     : string;
+	private safeSrc : SafeResourceUrl;
+  	constructor(
+  		private httpService  : HttpClientService,
+  		private sanitizer: DomSanitizer
+  	) {
+  		this.url = "videos";
+  	}
 
-  ngOnInit() {
-  }
+  	ngOnInit() {
+  		this.getVideoList();
+  	}
 
+  	getVideoList() {
+  		this.httpService.get(this.url).subscribe(
+  			(data: Video[]) => this.videos = data,
+  			error => console.log(error.error)
+  		);
+  	}
+
+  	videoURL(url) {
+    	this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    	return this.safeSrc;
+  	}
 }
