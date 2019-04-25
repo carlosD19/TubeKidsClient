@@ -29,7 +29,7 @@ import { ProfilesCreateComponent } from './components/profiles/create/create.com
 import { ProfilesEditComponent } from './components/profiles/edit/edit.component';
 import { ProfilesDeleteComponent } from './components/profiles/delete/delete.component';
 import { ProfilesShowComponent } from './components/profiles/show/show.component';
-
+import { FilterPipe } from './components/videos/filter.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +49,7 @@ import { ProfilesShowComponent } from './components/profiles/show/show.component
     VideosEditComponent,
     VideosDeleteComponent,
     VideosShowComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

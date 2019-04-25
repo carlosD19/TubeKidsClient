@@ -70,6 +70,13 @@ export class VideosEditComponent implements OnInit {
 	  		};
 	  		this.video = video;
 	  	}
+	  	if (!this.formData.has('name')) {
+	  		this.formData.append('path', this.video.path);
+	 	    this.formData.append('name', this.video.name);
+	 	    this.formData.append('type', this.video.type);
+	 	    this.formData.append('id', this.video.id.toString());
+	 	    this.formData.append('user_id', this.video.user_id.toString());
+	  	}
 	  	this.httpService.post(this.url, this.video.type=='true'?this.video:this.formData).subscribe(
 	  		data  => this.handleResponse(data),
 			error => this.handleError(error)

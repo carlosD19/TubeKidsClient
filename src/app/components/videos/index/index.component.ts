@@ -10,14 +10,16 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class VideosIndexComponent implements OnInit {
 
-  public videos   : Video[];
-	private url     : string;
-	private safeSrc : SafeResourceUrl;
+  public videos     : Video[];
+	private url       : string;
+	private safeSrc   : SafeResourceUrl;
+  public textFilter : string;
   constructor(
  		private httpService  : HttpClientService,
  		private sanitizer: DomSanitizer
   ) {
- 		this.url = "videos";
+ 		this.url        = "videos";
+    this.textFilter = "";
   }
 
   ngOnInit() {
