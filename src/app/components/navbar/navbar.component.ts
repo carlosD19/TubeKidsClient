@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
 
 	public loggedIn : boolean;
+	public user : any[];
 	constructor(
 		private auth   : AuthService,
 		private token  : TokenService,
@@ -21,6 +22,14 @@ export class NavbarComponent implements OnInit {
 
 	ngOnInit() {
 		this.auth.authStatus.subscribe(value => this.loggedIn = value);
+		this.me();
+	}
+
+	me() {
+		this.userService.me().subscribe(
+			(data: any[]) => this.user = data,
+			error         => console.log(error)
+		);
 	}
 
 	logout() {

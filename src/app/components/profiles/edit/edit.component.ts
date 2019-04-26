@@ -37,7 +37,7 @@ export class ProfilesEditComponent implements OnInit {
 	    });
  		this.url = "profiles/" + this.id;
 	}
-
+	
 	getProfile() {
 		this.httpService.get(this.url).subscribe(
   			(data: Profile)  => this.handleResponse(data),

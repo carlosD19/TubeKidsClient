@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
 		confirm_password : '12345678'
 	};
 	public error = [];
-
+	public errorAge = "";
 	constructor(
 		private userService  : UserService,
 		private tokenService : TokenService,
@@ -34,12 +34,27 @@ export class RegisterComponent implements OnInit {
 	}
 
 	register() {
-		this.userService.signup(this.user).subscribe(
-			data  => this.handleResponse(data),
-			error => this.handleError(error)
-		);
+		if (this.getAge() >= 18) {
+			this.userService.signup(this.user).subscribe(
+				data  => this.handleResponse(data),
+				error => this.handleError(error)
+			);
+		}
+		else{
+			this.errorAge = "Must be of legal age to register."
+		}
 	}
-
+	
+	getAge() {
+		const now: Date = new Date();
+		const birthdate: Date = new Date(this.user.birthdate);
+		let age: number = now.getFullYear() - birthdate.getFullYear();
+		let month: number = now.getMonth() - birthdate.getMonth();
+		if (month < 0 || (month === 0 && now.getDate() < birthdate.getDate())) {
+			age--;
+		}
+		return age;
+	}
 	handleResponse(data) {
 		this.tokenService.handle(data.access_token, data.user.email_verified_at, data.user.active_code);
 		this.auth.changeAuthStatus(true);
