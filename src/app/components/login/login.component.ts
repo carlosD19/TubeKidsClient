@@ -26,14 +26,14 @@ export class LoginComponent implements OnInit {
 
 	ngOnInit() {
 	}
-
+/** send login info to backend*/
 	login() {
 		this.userService.login(this.user).subscribe(
 			data  => this.handleResponse(data),
 			error => this.handleError(error)
 		);
 	}
-
+/** verify the email and code */
 	handleResponse(data) {
 		this.tokenService.handle(data.access_token, data.user.email_verified_at, data.user.active_code);
 		this.auth.changeAuthStatus(true);
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
 			this.router.navigate(['/verify/code', this.user.email]);
 		}
 	}
-
+/** handle the errors */
 	handleError(error) {
 		this.error = error.error.error;
 	}

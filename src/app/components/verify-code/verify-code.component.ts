@@ -33,26 +33,26 @@ export class VerifyCodeComponent implements OnInit {
 	        }
 	    });
 	}
-
+/** verify code*/
 	confirmCode() {
 		this.userService.verifyCode(this.user).subscribe(
 			data  => this.handleResponse(data),
 			error => this.handleError(error)
 		);
 	}
-
+/** send code*/
 	sendCode() {
 		this.userService.sendCode(this.user).subscribe(
 			data  => console.log(data),
 			error => console.log(error)
 		);
 	}
-
+/** handle response data*/
 	handleResponse(data) {
 		this.tokenService.setActiveCode(true);
 		this.router.navigateByUrl('/index');
 	}
-
+/** handle error response*/
 	handleError(error) {
 		this.error = error.error.error;
 		console.log(this.error);

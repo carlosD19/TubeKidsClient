@@ -26,7 +26,7 @@ export class ProfilesDeleteComponent implements OnInit {
 		this.takeProfileId();
  		this.getProfile();
 	}
-
+/** get a profile by id*/
 	takeProfileId() {
 		this.route.params.subscribe(params => {
 	        if(params['id']!=null){
@@ -35,29 +35,29 @@ export class ProfilesDeleteComponent implements OnInit {
 	    });
  		this.url = "profiles/" + this.id;
 	}
-
+/** get a list of profiles*/
 	getProfile() {
 		this.httpService.get(this.url).subscribe(
   			(data: Profile)  => this.handleResponse(data),
 			error => this.handleError(error)
   		);
 	}
-
+/** handle profile info */
   	handleResponse(data) {
 		this.profile = data.data;
 	}
-
+/** handle errors of profiles*/
 	handleError(error) {
 		console.log(error);
 	}
-
+/** search the profile to delete*/
 	delete() {
 		this.httpService.delete(this.url).subscribe(
   			data  => this.successResponse(data),
 			error => this.handleError(error)
   		);
 	}
-
+/** handle the route of profiles*/
 	successResponse(data) {
 		this.router.navigateByUrl('/profiles');
 	}

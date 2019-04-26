@@ -24,18 +24,18 @@ export class ProfilesCreateComponent implements OnInit {
 
   	ngOnInit() {
   	}
-
+/**makes a post of the information of the profiles*/
   	create() {
   		this.httpService.post(this.url, this.profile).subscribe(
   			data  => this.handleResponse(data),
 			error => this.handleError(error)
   		);
   	}
-
+/** handle the route of profiles*/
   	handleResponse(data) {
 		this.router.navigateByUrl('/profiles');
 	}
-
+/** handle error of profiles*/
 	handleError(error) {
 		this.error = error.error.errors;
 	}

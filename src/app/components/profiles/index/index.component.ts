@@ -17,7 +17,7 @@ export class ProfilesIndexComponent implements OnInit {
   	ngOnInit() {
   		this.getProfileList();
   	}
-
+/** get profiles list*/
   	getProfileList() {
   		this.httpService.get(this.url).subscribe(
   			(data: Profile[]) => this.profiles = data,

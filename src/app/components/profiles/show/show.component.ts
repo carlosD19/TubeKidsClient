@@ -24,7 +24,7 @@ export class ProfilesShowComponent implements OnInit {
 		this.takeProfileId();
  		this.getProfile();
 	}
-
+/** get an especific profile by id*/
 	takeProfileId() {
 		this.route.params.subscribe(params => {
 	        if(params['id']!=null){
@@ -33,18 +33,18 @@ export class ProfilesShowComponent implements OnInit {
 	    });
  		this.url = "profiles/" + this.id;
 	}
-
+/** send profile info */
 	getProfile() {
 		this.httpService.get(this.url).subscribe(
   			(data: Profile)  => this.handleResponse(data),
 			error => this.handleError(error)
   		);
 	}
-
+/** handle profile info*/
   	handleResponse(data) {
 		this.profile = data.data;
 	}
-
+/** handles profiles error*/
 	handleError(error) {
 		console.log(error);
 	}

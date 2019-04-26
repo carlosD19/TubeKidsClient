@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
 
 	ngOnInit() {
 	}
-
+/** verify users age*/
 	register() {
 		if (this.getAge() >= 18) {
 			this.userService.signup(this.user).subscribe(
@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
 			this.errorAge = "Must be of legal age to register."
 		}
 	}
-	
+/** get user age*/	
 	getAge() {
 		const now: Date = new Date();
 		const birthdate: Date = new Date(this.user.birthdate);
@@ -55,12 +55,13 @@ export class RegisterComponent implements OnInit {
 		}
 		return age;
 	}
+/** save user info and redirects to verify email*/
 	handleResponse(data) {
 		this.tokenService.handle(data.access_token, data.user.email_verified_at, data.user.active_code);
 		this.auth.changeAuthStatus(true);
 		this.router.navigate(['/verify/email', this.user.email]);
 	}
-
+/** handles profiles errors*/
 	handleError(error) {
 		this.error = error.error.errors;
 	}
